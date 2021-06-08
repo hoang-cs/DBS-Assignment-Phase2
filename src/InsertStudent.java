@@ -48,6 +48,7 @@ public class InsertStudent extends JFrame{
                 student.setPhoneNum(phoneNumInput.getText());
                 student.setMajor(majorInput.getText());
                 student.setDob(dobInput.getText());
+                if(Main.val.val(student))
                 if (Main.myCon.addStudentInfor(student))
                     JOptionPane.showMessageDialog(mainPanel, "Thêm thông tin thành công");
                 else

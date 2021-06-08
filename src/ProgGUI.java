@@ -66,8 +66,8 @@ public class ProgGUI extends JFrame{
                     program.setType("GD");
                 if (internCheck.isSelected())
                     program.setType("TT");
-
-                new InsertProgram(program);
+                if(Main.val.val(program))
+                    new InsertProgram(program);
             }
         });
         findButton.addActionListener(new ActionListener() {
@@ -89,11 +89,12 @@ public class ProgGUI extends JFrame{
                     program.setType("GD");
                 if (internCheck.isSelected())
                     program.setType("TT");
-
-                ArrayList<Program> resultList = Main.myCon.searchProgramInfor(program);
-                for (Program p : resultList){
-                    resultModel.addRow(new Object[]{p.getId(), p.getName(), p.getType(), p.getCoordinate(),p.getNation(),
-                            p.getStartTime(), p.getEndTime(), p.getMoney(), p.getNumOfStudent()});
+                if(Main.val.val(program)) {
+                    ArrayList<Program> resultList = Main.myCon.searchProgramInfor(program);
+                    for (Program p : resultList) {
+                        resultModel.addRow(new Object[]{p.getId(), p.getName(), p.getType(), p.getCoordinate(), p.getNation(),
+                                p.getStartTime(), p.getEndTime(), p.getMoney(), p.getNumOfStudent()});
+                    }
                 }
             }
         });

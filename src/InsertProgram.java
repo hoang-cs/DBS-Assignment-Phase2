@@ -50,7 +50,7 @@ public class InsertProgram extends JFrame{
                 program.setMoney(Integer.parseInt(moneyInput.getText()));
                 program.setNation(nationInput.getText());
                 program.setCoordinate(provinceInput.getText());
-
+                if(Main.val.val(program))
                 if (Main.myCon.addProgramInfor(program))
                     JOptionPane.showMessageDialog(mainPanel, "Thêm thông tin thành công");
                 else

@@ -37,8 +37,9 @@ public class modifyStudent extends JDialog{
                 s.setPhoneNum(phoneInput.getText());
 
                 // call SQL UPDATE
+                if(Main.val.val(s))
                 if(Main.myCon.modStudent(s)){
-                    JOptionPane.showMessageDialog(mainPanel, "Thành công");
+                    JOptionPane.showMessageDialog(mainPanel, "Chỉnh sửa sinh viên thành công");
                 }
                 else JOptionPane.showMessageDialog(mainPanel, "Thất bại");
 

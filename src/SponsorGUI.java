@@ -39,12 +39,13 @@ public class SponsorGUI extends JFrame {
                 if(per){
                     s.person=new Sponsor.Person();
                     s.person.setFullName(textField1.getText());
+
                 }
                 else {
                     s.company=new Sponsor.Company();
                     s.company.setCompName(textField1.getText());
                 }
-                new SponsorResult(s, per, OrderNameCheck.isSelected(), DOBCheckBox.isSelected(), account);
+                if(Main.val.val(s))   new SponsorResult(s, per, OrderNameCheck.isSelected(), DOBCheckBox.isSelected(), account);
             }
         });
         addButton.addActionListener(new ActionListener() {
@@ -62,7 +63,8 @@ public class SponsorGUI extends JFrame {
                 if (per) {
                     s.person = new Sponsor.Person();
                     s.person.setFullName(textField1.getText());
-                    new InsertPerson(s);
+                    if(!Main.val.checkName(s.person.getFullName()))JOptionPane.showMessageDialog(mainPanel, "Vui lòng nhập đúng tên");
+                    else new InsertPerson(s);
                 } else {
                     s.company = new Sponsor.Company();
                     s.company.setCompName(textField1.getText());

@@ -40,7 +40,7 @@ public class ModMem extends JDialog{
                 m.setIdDep(depSelect.getSelectedIndex()+1);
                 if(Main.val.val(m))
                     if(Main.myCon.modMember(m)){
-                        JOptionPane.showMessageDialog(mainPanel, "Thành công");
+                        JOptionPane.showMessageDialog(mainPanel, "Chỉnh sửa thành công");
                     }
                     else JOptionPane.showMessageDialog(mainPanel, "Thất bại");
             }

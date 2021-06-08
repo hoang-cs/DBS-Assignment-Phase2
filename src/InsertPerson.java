@@ -35,6 +35,7 @@ public class InsertPerson extends JFrame{
                 s.person.setVillage(villageInput.getText());
                 s.person.setDistrict(districtInput.getText());
                 // EXECUTE INSERT QUERY
+                if(Main.val.val(s))
                 if(Main.myCon.addPerson(s)) {
                     JOptionPane.showMessageDialog(mainPanel, "Thành công");
                     close();

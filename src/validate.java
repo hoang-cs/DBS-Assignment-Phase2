@@ -19,7 +19,6 @@ public class validate{
         if (name==null) return true;
         for(Integer j=0; j<10;j++){
                 if(name.contains(num[j])){
-                    JOptionPane.showMessageDialog(mainPanel, "Vui lòng điền lại nội dung");
                     return false;
                 }
         }
@@ -30,48 +29,91 @@ public class validate{
         if(Phone==null)return true;
         for(Integer j=0; j<52;j++){
             if(Phone.contains(al[j])){
-                JOptionPane.showMessageDialog(mainPanel, "Vui lòng điền lại số");
                 return false;
             }
         }
         return true;
     }
 
-    public boolean val(Program s){
-        return(
-        checkName(s.getName())&&
-        checkName(s.getCoordinate())&&
-        checkName(s.getNation())&&
-        checkNum(s.getStartTime())&&
-        checkNum(s.getEndTime()));
+    public boolean val(Program s) {
+        if (checkName(s.getName())) {
+            if (checkName(s.getCoordinate())) {
+                if (checkName(s.getNation())) {
+                    if (checkNum(s.getStartTime())) {
+                        if (checkNum(s.getEndTime())) return true;
+                        else{
+                            JOptionPane.showMessageDialog(mainPanel, "Ngày sai định dạng");
+                            return false;}
+                    }
+                    JOptionPane.showMessageDialog(mainPanel, "Ngày sai định dạng");
+                    return false;
+                }
+                JOptionPane.showMessageDialog(mainPanel, "Tên quốc gia sai");
+                return false;
+            }
+            return false;
+        }
+        JOptionPane.showMessageDialog(mainPanel, "Vui lòng nhập lại tên chương trình");
+        return false;
     }
 
     public boolean val(Sponsor s){
 
-                if(s.person!=null)return (
-        checkName(s.person.getFullName())&&
-        checkName(s.person.getDistrict())&&
-        checkName(s.person.getProvince()));
-                else if(s.company!=null)return(
-        checkName(s.company.getCompName())&&
-        checkName(s.company.getRepName())&&
-        checkNum(s.company.getRepPhoneNum()));
-                return true;
+        if(s.person!=null){
+            if(checkName(s.person.getFullName())){
+                    if(checkName(s.person.getProvince()))
+                        return true;
+                    JOptionPane.showMessageDialog(mainPanel, "Vui lòng nhập lại tên tỉnh");
+                        return false;
+
+            }JOptionPane.showMessageDialog(mainPanel, "Vui lòng nhập lại tên cá nhân");
+            return false;
+        }
+        else if(s.company!=null){
+            if( checkName(s.company.getRepName())){
+                if(checkNum(s.company.getRepPhoneNum()))return true;
+                JOptionPane.showMessageDialog(mainPanel, "Sai SĐT");
+                return false;
+            }
+            JOptionPane.showMessageDialog(mainPanel, "Tên người đại diện lỗi");
+            return false;
+        }
+    return true;
     }
 
     public boolean val(Student s){
-        return (checkName(s.getFullName())&&
-        checkName(s.getUni())&&
-        checkName(s.getMajor())&&
-        checkNum(s.getPhoneNum()));
+        if(checkName(s.getFullName())){
+            if(checkName(s.getUni())){
+                if(checkName(s.getMajor())){
+                    if(checkNum(s.getPhoneNum()))return true;
+                    JOptionPane.showMessageDialog(mainPanel, "Sai SĐT");
+                    return false;
+                }
+                JOptionPane.showMessageDialog(mainPanel, "Chuyên ngành lỗi");
+                return false;
+            }JOptionPane.showMessageDialog(mainPanel, "Sai tên trường");
+            return false;
+        }JOptionPane.showMessageDialog(mainPanel, "Vui lòng nhập lại tên");
+        return false;
     }
     public boolean val(Member s){
-        return (checkName(s.getFullName())&&
-        checkNum(s.getDob())&&
-        checkName(s.getRole())&&
-        checkNum(s.getPhoneNum()));
+        if(checkName(s.getFullName())){
+            if(checkNum(s.getDob())){
+                if(checkName(s.getRole())){
+                    if(checkNum(s.getPhoneNum()))return true;
+                    JOptionPane.showMessageDialog(mainPanel, "Sai SĐT");
+                    return false;
+                }
+                JOptionPane.showMessageDialog(mainPanel, "Vai trò không đúng");
+                return false;
+            }JOptionPane.showMessageDialog(mainPanel, "Ngày sinh chứa kí tự chữ");
+            return false;
+        }JOptionPane.showMessageDialog(mainPanel, "Tên không được chứa số");
+        return false;
     }
     public boolean val(Event e){
-        return checkName(e.getDate());
+        if(checkName(e.getDate()))return true;
+        JOptionPane.showMessageDialog(mainPanel, "Tên chứa kí tự số");
+        return false;
     }
 }

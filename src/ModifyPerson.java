@@ -39,7 +39,7 @@ public class ModifyPerson extends JDialog{
                 s.person.setVillage(villageInput.getText());
                 s.person.setDistrict(districtInput.getText());
                 s.person.setProvince(provinceInput.getText());
-
+                if(Main.val.val(s))
                 if(Main.myCon.modPerson(s))
                     JOptionPane.showMessageDialog(mainPanel, "Chỉnh sửa thông tin thành công");
                 else JOptionPane.showMessageDialog(mainPanel, "Chỉnh sửa thông tin thất bại !!!");

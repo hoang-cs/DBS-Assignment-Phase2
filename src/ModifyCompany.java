@@ -36,7 +36,7 @@ public class ModifyCompany extends JDialog{
                 s.company.setMS(Integer.parseInt(MSInput.getText()));
                 s.company.setRepName(reNameInput.getText());
                 s.company.setRepPhoneNum(phoneNumInput.getText());
-
+                if(Main.val.val(s))
                 if(Main.myCon.modCom(s))
                     JOptionPane.showMessageDialog(mainPanel, "Chỉnh sửa thông tin thành công");
                 else JOptionPane.showMessageDialog(mainPanel, "Chỉnh sửa thông tin thất bại !!!");

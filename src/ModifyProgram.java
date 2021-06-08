@@ -53,8 +53,9 @@ public class ModifyProgram extends JDialog{
                 p.setEndTime(endTimeInput.getText());
 
                 // call function
+                if(Main.val.val(p))
                 if(Main.myCon.modProgramInfor(p)){
-                    JOptionPane.showMessageDialog(mainPanel, "Thành công");
+                    JOptionPane.showMessageDialog(mainPanel, "Đã cập nhật chương trình");
                 }
                 else JOptionPane.showMessageDialog(mainPanel, "Thất bại");
             }

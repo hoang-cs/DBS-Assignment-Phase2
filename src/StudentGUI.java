@@ -68,15 +68,16 @@ public class StudentGUI extends JFrame{
                 student.setUniAbbreviation(uniAbbrev.getText());
                 if (!IDInput.getText().equals(""))
                     student.setId(Integer.parseInt(IDInput.getText()));
+                if(Main.val.val(student)) {
+                    boolean order = OrderNameCheck.isSelected();
 
-                boolean order = OrderNameCheck.isSelected();
+                    ArrayList<Student> resultList = Main.myCon.searchStudentInfor(student, order);
 
-                ArrayList<Student> resultList = Main.myCon.searchStudentInfor(student, order);
-
-                DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
-                for (Student s : resultList){
-                    model.addRow(new Object[]{s.getFullName(), s.getId(), s.getUni(),
-                            s.getUniAbbreviation(),s.getMajor(),s.getDob(), s.getPhoneNum()});
+                    DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
+                    for (Student s : resultList) {
+                        model.addRow(new Object[]{s.getFullName(), s.getId(), s.getUni(),
+                                s.getUniAbbreviation(), s.getMajor(), s.getDob(), s.getPhoneNum()});
+                    }
                 }
             }
         });
@@ -92,7 +93,9 @@ public class StudentGUI extends JFrame{
                 s.setId(Integer.parseInt(IDInput.getText()));
                 s.setUni(schoolNameInput.getText());
                 s.setUniAbbreviation(uniAbbrev.getText());
-                new InsertStudent(s);
+                if(Main.val.val(s)) {
+                    new InsertStudent(s);
+                }
             }
         });
         modifyButton.addActionListener(new ActionListener() {

@@ -58,14 +58,16 @@ public class MemberGUI extends JFrame{
                 }
 
                 // CALL EXECUTE QUERY
-                ArrayList<Member> resultList = Main.myCon.searchMemberInfor(m,order);
+                if(Main.val.val(m)) {
+                    ArrayList<Member> resultList = Main.myCon.searchMemberInfor(m, order);
 
-                for (Member x : resultList){
-                    String temp;
-                    if (x.getIdDep() == 1) temp = "Ban quản lý";
-                    else if (x.getIdDep() == 2) temp = "Ban tổ chức";
-                    else    temp = "Ban tài chính";
-                    resultModel.addRow(new Object[]{x.getId(),x.getFullName(),x.getDob(),x.getPhoneNum(),x.getRole(),temp});
+                    for (Member x : resultList) {
+                        String temp;
+                        if (x.getIdDep() == 1) temp = "Ban quản lý";
+                        else if (x.getIdDep() == 2) temp = "Ban tổ chức";
+                        else temp = "Ban tài chính";
+                        resultModel.addRow(new Object[]{x.getId(), x.getFullName(), x.getDob(), x.getPhoneNum(), x.getRole(), temp});
+                    }
                 }
             }
         });

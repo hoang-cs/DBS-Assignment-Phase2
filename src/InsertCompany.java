@@ -30,8 +30,9 @@ public class InsertCompany extends JFrame{
                 s.company.setRepName(nameRepInput.getText());
                 s.company.setRepPhoneNum(phoneInput.getText());
                 // EXECUTE INSERT QUERY
+                if(Main.val.val(s))
                 if(Main.myCon.addCom(s.company)) {
-                    JOptionPane.showMessageDialog(mainPanel, "Thành công");
+                    JOptionPane.showMessageDialog(mainPanel, "Thêm công ty thành công");
                     close();
                 }
                 else JOptionPane.showMessageDialog(mainPanel, "Thất bại");
