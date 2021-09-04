@@ -37,8 +37,9 @@ public class AddEvent extends JDialog{
     }
 
     private void executeQuery(Event event){
-        if(event != null){
+        if(Main.myCon.addEvent(event)){
             JOptionPane.showMessageDialog(this, "Thêm sự kiện thành công !!!");
+            exitButton.doClick();
         }
         else JOptionPane.showMessageDialog(this, "Thêm sự kiện thất bại.\nVui lòng thử lại sau");
     }
