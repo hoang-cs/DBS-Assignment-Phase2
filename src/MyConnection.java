@@ -551,7 +551,7 @@ public class MyConnection {
         StringBuilder sql = new StringBuilder("UPDATE [Công ty] SET ");
         boolean add=false;
         if(c.company.getCompName()!=""){
-            sql.append("  [Tên công ty]=N\'"+c.company.getCompName()  +"\'");
+            sql.append("  [Tên công ty]=N\'"+c.company.getCompName()  +"\',");
             add=true;
         }if(c.company.getMS()!=0){
             sql.append("  [Mã số kinh doanh]=\'"+c.company.getMS().toString()  +"\'");
