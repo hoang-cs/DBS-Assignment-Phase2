@@ -764,6 +764,21 @@ public class MyConnection {
         }
         return false;
     }
+    
+    public boolean addEvent(Event event) {
+        StringBuilder sql = new StringBuilder("INSERT INTO [Mốc sự kiện] VALUES (2,");
+        sql.append(event.getIdProg());
+        sql.append(", N'" + event.getJob() + "', '" +event.getDate() + "')");
+        try {
+            PreparedStatement ps = con.prepareStatement(sql.toString());
+            return ps.executeUpdate() > 0;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+    
     public Account searchAccount(String user, String pass){
         String sql = "SELECT * FROM [Tài khoản] " +
                 "JOIN [Thành viên] ON [Thành viên].[ID_thành viên] = [Tài khoản].[ID_thành viên]" +
